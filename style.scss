@@ -1,70 +1,11 @@
-// Animates transparent layer
-@keyframes top {
-  from {
-    height: 5px;
-  }
-  to {
-    height: 500px;
-  }
-}
-
-@keyframes bottom {
-  from {
-    height: 5px;
-  }
-  to {
-    height: 60px;
-  }
-}
-
-// Animates text layer
-@keyframes text {
-  from {
-    top: 8px;
-  }
-  to {
-    top: -120px;
-  }
-}
-
-// Animates transparent layer bg image
-@keyframes bg {
-  from {
-    background-position: -10% 0;
-    opacity: 0;
-  }
-  to {
-    background-position: 0 0;
-    opacity: 0.7;
-  }
-}
-
-// Animates banner area layers
-@keyframes herobg {
-  from {
-    background-position-x: 20%;
-    opacity: 0;
-  }
-  to {
-    background-position-x: -340%;
-    opacity: 1;
-  }
-}
-
-@keyframes herocontent {
-  from {
-    left: 100%;
-  }
-  to {
-    left: 0;
-  }
-}
+@import "animations";
 
 // Site styles
 body {
   padding: 0;
   margin: 0;
   font: 75%/1.8em arial;
+  text-align: center;
 }
 
 * {
@@ -75,133 +16,158 @@ body {
 .hero {
   width: 100%;
   min-height: 32em;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
   overflow: hidden;
   background: url('https://www.toptal.com/designers/subtlepatterns/patterns/contemporary_china_2.png');
+  opacity: 0;
+  
   &.active {
-    .sp1 {
+    opacity: 1;
+    .right-region {
       animation: herobg 0.3s forwards;
       -webkit-filter: grayscale(1);
       filter: grayscale(1);
+      opacity: 1;
     }
-    .sp2 {
-      animation: herocontent 0.3s 0.2s forwards;
-    }
-    .sp3 {
-      animation: herocontent 0.3s 0.4s forwards;
+    .content {
+      right: 0;
+      transition: all 0.2s ease;
     }
   }
-  .banner-content {
-    height: 50vh;
-    width: 50%;
-    padding: 7em 0 0;
-    float: right;
-    position: relative;
+
+  .right-region {
+    opacity: 0;
+    transition: all 0.2s ease;
+    background: url('http://www.dccomics.com/sites/default/files/styles/get_to_know_x493/public/gettoknow_loislane_572ce58442e206.54278591.png?itok=A2I--Q_r') no-repeat -50% -57px;
   }
-  .sp {
+
+}
+
+.container {
+  width: 100%;
+  position: relative;
+}
+
+.hero-item {
+  width: 100%;
+  height: 32em;
+
+  .content {
+    width: 30em;
     position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
-    height: 35em;
-    &.sp1 {
-      overflow: hidden;
-      width: 76%;
-      opacity: 0;
-      //left: 5%;
-      background: url('http://www.pngall.com/wp-content/uploads/2016/04/Happy-Person.png') no-repeat 0 100%;
-    }
-    &.sp2 {
-      top: 3em;
-      left: 100%;
-      font-size: 2em;
-      line-height: 1.2em;
-    }
-    &.sp3 {
-      left: 100%;
-      height: auto;
-      top: auto;
-      bottom: 0;
-    }
+    right: -100em;
+    top: 5em;
+    color: #fff;
+    padding: 2em;
+    margin: 5em 20em 0 20em;
+    background: rgba(33, 33, 33, 0.6);
+
     button {
       padding: 0.8em;
       font-size: 0.9em;
       text-transform: uppercase;
       color: #990000;
       background: #fff;
-      border: 2px solid #990000;
+      border: 5px solid #990000;
     }
+
   }
+  
+}
+
+// Hero content regions
+.left-region,
+.center-region,
+.right-region {
+  float: left;
+  transition: all 0.4s ease;
+  text-align: left;
+}
+
+.center-region {
+  background: rgba(33, 33, 33, 0.6);
+}
+
+.right-region {
+  height: 37em;
+  overflow: hidden;
+  position: relative;
 }
 
 // Specific to menu only
 nav {
-  min-height: 33em;
-  position: absolute;
-  left: 0;
-  top: 0;
+  width: 100%;
+  padding-top: 32em;
+  margin: 0 auto;
+  clear: both;
   ul {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-}
-
-li,
-a {
-  min-height: 5em;
-  display: block;
-  float: left;
-}
-
-a {
-  width: 780 / 5 + 'px';
-  padding-right: 12em;
-  padding-top: 0.6em;
-  padding-left: 0.9em;
-  position: relative;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #000;
-  text-decoration: none;
-  .ltext {
     width: 100%;
-    color: #000;
-    position: absolute;
-    left: 1em;
-    top: 8px;
-    z-index: 999;
-    transition: all 0.2s ease-out;
-    animation-delay: 2.1s;
+    margin: 0;
+    padding: 0;
+    text-align: left;
   }
-  .ltbg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: url('http://www.pngall.com/wp-content/uploads/2016/04/Happy-Person.png') no-repeat -200% 0;
+  li {
+    width: 25%;
   }
-  .sp {
+
+  li, a {
+    min-height: 5em;
     display: block;
-    position: absolute;
-    left: 0;
+    float: left;
+  }
+
+  a {
     width: 100%;
-    height: 5px;
-    background: #990000;
-    transition: all 0.2s ease-out;
-    &.sp1 {
-      bottom: 55px;
+    padding-right: 12em;
+    padding-top: 0.6em;
+    padding-left: 0.9em;
+    position: relative;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    .ltext {
+      color: #000;
+      position: absolute;
+      left: 0.5em;
+      top: 0.8em;
+      font-size: 1.6em;
+      z-index: 999;
+      transition: all 0.2s ease-out;
+      animation-delay: 2.1s;
     }
-    &.sp2 {
-      bottom: auto;
-      top: 0;
+    .ltbg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background: url('http://www.dccomics.com/sites/default/files/styles/get_to_know_x493/public/gettoknow_loislane_572ce58442e206.54278591.png?itok=A2I--Q_r') no-repeat -200% 0;
     }
-    &.sp1, &.sp2, &.ltbg {
-      opacity: 0.8;
+    .sp {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 7px;
+      background: #990000;
+      transition: all 0.2s ease-out;
+      &.sp1 {
+        bottom: 55px;
+      }
+      &.sp2 {
+        bottom: auto;
+        top: 0;
+      }
+      &.sp1, &.sp2, &.ltbg {
+        opacity: 0.8;
+      }
     }
   }
-  &.active span {
+
+  li.active a span {
     &.ltext {
       color: #fff;
       animation: text 0.3s 0.1s forwards;
@@ -216,4 +182,5 @@ a {
       animation: top 0.3s forwards, bg 0.2s 0.2s forwards;
     }
   }
+
 }
