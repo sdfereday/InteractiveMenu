@@ -13,8 +13,16 @@ window.addEventListener('load', function () {
 
   let ItemModel = function (heroElement, menuElement, container) {
 
+    let self = this;
+
     this.heroElement = heroElement;
     this.container = container;
+    this.state = 1;
+
+    this.classes = {
+      hero: heroElement.className,
+      menu: menuElement.className
+    };
 
     this.menuElement = {
       x: menuElement.offsetLeft,
@@ -38,42 +46,44 @@ window.addEventListener('load', function () {
       }
     };
 
-    this.AdjustCenter(); // .. . .
-    this.state = 1;
-    let self = this;
-
-    menuElement.addEventListener('click', function () {
-
-      self.state *= -1;
-      heroElement.className = self.state < 0 ? 'hero hero-item active' : 'hero hero-item';
-      this.className = self.state < 0 ? 'activate active' : 'activate';
-
-      if (self.state < 0) {
-        self.regions.right.el.style.backgroundPosition = -(self.menuElement.w) + "px -57px";
-      } else {
-        self.regions.right.el.style.backgroundPosition = "";
-      }
-
-      if (prevSlide && prevSlide !== self) {
-        prevSlide.hide();
-      }
-
-      prevSlide = self;
-
+    menuElement.addEventListener('click', function(){
+      self.open();
     });
+
+    this.adjustCenter();
 
   };
 
   ItemModel.prototype.hide = function () {
 
-    this.heroElement.className = 'hero hero-item';
-    this.menuElement.el.className = 'activate';
-    this.state *= -1;
+    this.heroElement.className = this.classes.hero;
+    this.menuElement.el.className = this.classes.menu;
     this.regions.right.el.style.backgroundPosition = "";
+    this.state *= -1;
 
   };
 
-  ItemModel.prototype.AdjustCenter = function (w, h, x, y) {
+  ItemModel.prototype.open = function() {
+
+      this.state *= -1;
+      this.heroElement.className = this.state < 0 ? this.classes.hero + ' active' : this.classes.hero;
+      this.menuElement.el.className = this.state < 0 ? this.classes.menu + ' active' : this.classes.menu;
+
+      if (this.state < 0) {
+        this.regions.right.el.style.backgroundPosition = -(this.menuElement.w) + "px -57px";
+      } else {
+        this.regions.right.el.style.backgroundPosition = "";
+      }
+
+      if (prevSlide && prevSlide !== this) {
+        prevSlide.hide();
+      }
+
+      prevSlide = this;
+
+  };
+
+  ItemModel.prototype.adjustCenter = function (w, h, x, y) {
 
     this.regions.left.el.style.width = (this.menuElement.x - this.regions.center.width) + 'px';
 
@@ -98,5 +108,7 @@ window.addEventListener('load', function () {
     items.push(new ItemModel(el, menuItems[i], document.querySelector('.container')));
 
   });
+
+  //items[0].open();
 
 });

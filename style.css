@@ -90,7 +90,9 @@ body {
 
 .container {
   width: 100%;
+  max-width: 1240px;
   position: relative;
+  margin: 0 auto;
 }
 
 .hero-item {
@@ -105,15 +107,11 @@ body {
   color: #fff;
   padding: 2em;
   margin: 5em 20em 0 20em;
-  background: rgba(33, 33, 33, 0.6);
 }
 .hero-item .content button {
   padding: 0.8em;
   font-size: 0.9em;
   text-transform: uppercase;
-  color: #990000;
-  background: #fff;
-  border: 5px solid #990000;
 }
 
 .left-region,
@@ -122,10 +120,6 @@ body {
   float: left;
   transition: all 0.4s ease;
   text-align: left;
-}
-
-.center-region {
-  background: rgba(33, 33, 33, 0.6);
 }
 
 .right-region {
@@ -147,7 +141,7 @@ nav ul {
   text-align: left;
 }
 nav li {
-  width: 25%;
+  width: 20%;
 }
 nav li, nav a {
   min-height: 5em;
@@ -189,7 +183,6 @@ nav a .sp {
   left: 0;
   width: 100%;
   height: 7px;
-  background: #990000;
   transition: all 0.2s ease-out;
 }
 nav a .sp.sp1 {
@@ -214,6 +207,81 @@ nav li.active a span.sp2 {
 }
 nav li.active a span.ltbg {
   animation: top 0.3s forwards, bg 0.2s 0.2s forwards;
+}
+
+.orange .sp {
+  background: #f26c4f;
+}
+.orange .content button {
+  color: #f26c4f;
+  background: #fff;
+  border: 5px solid #f26c4f;
+}
+.orange .content {
+  background: rgba(33, 33, 33, 0.6);
+}
+.orange .center-region {
+  background: rgba(33, 33, 33, 0.6);
+}
+
+.green .sp {
+  background: #4ce996;
+}
+.green .content button {
+  color: #4ce996;
+  background: #fff;
+  border: 5px solid #4ce996;
+}
+.green .content {
+  background: rgba(33, 33, 33, 0.6);
+}
+.green .center-region {
+  background: rgba(33, 33, 33, 0.6);
+}
+
+.pink .sp {
+  background: #f24f94;
+}
+.pink .content button {
+  color: #f24f94;
+  background: #fff;
+  border: 5px solid #f24f94;
+}
+.pink .content {
+  background: rgba(33, 33, 33, 0.6);
+}
+.pink .center-region {
+  background: rgba(33, 33, 33, 0.6);
+}
+
+.yellow .sp {
+  background: #f2ce4f;
+}
+.yellow .content button {
+  color: #f2ce4f;
+  background: #fff;
+  border: 5px solid #f2ce4f;
+}
+.yellow .content {
+  background: rgba(33, 33, 33, 0.6);
+}
+.yellow .center-region {
+  background: rgba(33, 33, 33, 0.6);
+}
+
+.teal .sp {
+  background: #4fd1f2;
+}
+.teal .content button {
+  color: #4fd1f2;
+  background: #fff;
+  border: 5px solid #4fd1f2;
+}
+.teal .content {
+  background: rgba(33, 33, 33, 0.6);
+}
+.teal .center-region {
+  background: rgba(33, 33, 33, 0.6);
 }
 
 /*# sourceMappingURL=style.css.map */
