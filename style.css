@@ -30,16 +30,6 @@
     opacity: 0.7;
   }
 }
-@keyframes bginvert {
-  from {
-    background-position: 100% 0;
-    opacity: 0;
-  }
-  to {
-    background-position: 95% 0;
-    opacity: 0.7;
-  }
-}
 @keyframes herobg {
   from {
     opacity: 0;
@@ -170,15 +160,19 @@ body {
 }
 .hero.active .content {
   right: 0;
-  transition: all 0.2s ease;
-}
-.hero.active.invert {
-  left: 0;
+  transition: all 0.5s ease;
 }
 .hero .right-region, .hero .left-region {
   opacity: 0;
-  transition: all 0.8s ease;
+  transition: all 0.3s ease;
   background: url("http://www.dccomics.com/sites/default/files/styles/get_to_know_x493/public/gettoknow_loislane_572ce58442e206.54278591.png?itok=A2I--Q_r") no-repeat 1240px 100%;
+}
+.hero.invert .right-region, .hero.invert .left-region {
+  background-position: -1240px 0;
+}
+.hero.invert.active .content {
+  right: auto;
+  left: 0;
 }
 
 .hero-item {
@@ -265,7 +259,7 @@ nav a .ltext {
   animation-delay: 2.1s;
 }
 nav a .ltbg {
-  transition: all 0.6s ease;
+  transition: all 0.4s ease;
   opacity: 0;
   width: 100%;
   height: 100%;
@@ -305,8 +299,8 @@ nav li.active a span.sp2 {
 nav li.active a span.ltbg {
   animation: top 0.3s forwards, bg 0.2s 0.2s forwards;
 }
-nav .invert.active .ltbg {
-  animation: top 0.3s forwards, bginvert 0.2s 0.2s forwards;
+nav .invert .ltbg {
+  background-position: -1240px 0;
 }
 
 /*# sourceMappingURL=style.css.map */

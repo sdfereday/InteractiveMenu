@@ -39,17 +39,6 @@
   }
 }
 
-@keyframes bginvert {
-  from {
-    background-position: 100% 0;
-    opacity: 0;
-  }
-  to {
-    background-position: 95% 0;
-    opacity: 0.7;
-  }
-}
-
 // Animates banner area layers
 @keyframes herobg {
   from {
