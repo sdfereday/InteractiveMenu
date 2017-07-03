@@ -11,6 +11,7 @@ window.addEventListener('load', function () {
 
   let prevSlide = null;
   let offset = -256; // TODO: Should be done via data-attrib
+  let backgroundWidth = 493;
 
   let ItemModel = function (heroElement, menuElement, container) {
 
@@ -39,14 +40,16 @@ window.addEventListener('load', function () {
 
     this.regions = {
       left: {
-        el: heroElement.querySelector('.left-region')
+        el: heroElement.querySelector('.left-region'),
+        bg: heroElement.querySelector('.left-region').querySelector('.bg')
       },
       center: {
         width: this.menuElement.w,
         el: heroElement.querySelector('.center-region')
       },
       right: {
-        el: heroElement.querySelector('.right-region')
+        el: heroElement.querySelector('.right-region'),
+        bg: heroElement.querySelector('.right-region').querySelector('.bg')
       }
     };
 
@@ -58,14 +61,20 @@ window.addEventListener('load', function () {
 
   };
 
+  ItemModel.prototype.clear = function () {
+
+    this.regions.right.bg.style.backgroundPosition = "";
+    this.regions.left.bg.style.backgroundPosition = "";
+    this.menuElement.bg.style.backgroundPosition = "";
+
+  };
+
   ItemModel.prototype.hide = function () {
 
     this.heroElement.className = this.classes.hero;
     this.menuElement.el.className = this.classes.menu;
 
-    this.regions.right.el.style.backgroundPosition = "";
-    this.regions.left.el.style.backgroundPosition = "";
-    this.menuElement.bg.style.backgroundPosition = "";
+    this.clear();
 
     this.state *= -1;
 
@@ -77,37 +86,15 @@ window.addEventListener('load', function () {
     this.heroElement.className = this.state < 0 ? this.classes.hero + ' active' : this.classes.hero;
     this.menuElement.el.className = this.state < 0 ? this.classes.menu + ' active' : this.classes.menu;
 
-    let offsetPoint = (this.menuElement.x + this.regions.right.el.clientWidth) - this.container.clientWidth;
-    //let offsetPointB = this.regions.center.width + (this.regions.left.el.clientWidth + (this.menuElement.x + this.regions.right.el.clientWidth)) - this.container.clientWidth;
-    let offsetPointB = this.container.clientWidth;
-    let offsetPointC = offsetPointB;
-
     if (this.state < 0) {
 
-      //this.regions.right.el.style.backgroundPosition = (offsetPoint + offset) + "px 100%";
-      //this.regions.left.el.style.backgroundPosition = (offsetPointB + offset) + "px 100%";
-      // + this.regions.left.el.clientWidth
-
-      // Use this to figure out the proper position on the left region
-      let fakeWidth = this.menuElement.w + this.regions.right.el.clientWidth;
-
-      //this.regions.left.el.style.backgroundPosition = -fakeWidth + "px 100%";
-
-      // container width - this.regions.left.el.clientWidth
-
-      // this.regions.left.el.style.backgroundPosition = (this.regions.left.el.clientWidth - (254)) + "px 100%";
-      //((this.regions.left.el.clientWidth + offset) - (offsetPointB))
-
-      this.regions.left.el.style.backgroundPosition = -this.container.clientWidth + "px 100%";
-      this.regions.right.el.style.backgroundPosition = -(this.menuElement.w + -offset) + "px 100%";
-
+      this.regions.left.bg.style.backgroundPosition = "0 100%";
+      this.regions.right.bg.style.backgroundPosition = -(this.menuElement.w + -offset) + "px 100%";
       this.menuElement.bg.style.backgroundPosition = offset + "px 100%";
 
     } else {
 
-      this.regions.right.el.style.backgroundPosition = "";
-      this.regions.left.el.style.backgroundPosition = "";
-      this.menuElement.bg.style.backgroundPosition = "";
+      this.clear();
 
     }
 
