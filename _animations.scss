@@ -17,16 +17,6 @@
   }
 }
 
-// Animates text layer
-@keyframes text {
-  from {
-    top: 8px;
-  }
-  to {
-    top: -280px;
-  }
-}
-
 // Animates transparent layer bg image
 @keyframes bg {
   from {

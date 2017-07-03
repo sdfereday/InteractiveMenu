@@ -78,13 +78,29 @@ window.addEventListener('load', function () {
     this.menuElement.el.className = this.state < 0 ? this.classes.menu + ' active' : this.classes.menu;
 
     let offsetPoint = (this.menuElement.x + this.regions.right.el.clientWidth) - this.container.clientWidth;
-    let offsetPointB = this.regions.center.width + (this.regions.left.el.clientWidth + (this.menuElement.x + this.regions.right.el.clientWidth)) - this.container.clientWidth;
+    //let offsetPointB = this.regions.center.width + (this.regions.left.el.clientWidth + (this.menuElement.x + this.regions.right.el.clientWidth)) - this.container.clientWidth;
+    let offsetPointB = this.container.clientWidth;
     let offsetPointC = offsetPointB;
 
     if (this.state < 0) {
 
-      this.regions.right.el.style.backgroundPosition = (offsetPoint + offset) + "px 100%";
-      this.regions.left.el.style.backgroundPosition = (offsetPointB + offset) + "px 100%";
+      //this.regions.right.el.style.backgroundPosition = (offsetPoint + offset) + "px 100%";
+      //this.regions.left.el.style.backgroundPosition = (offsetPointB + offset) + "px 100%";
+      // + this.regions.left.el.clientWidth
+
+      // Use this to figure out the proper position on the left region
+      let fakeWidth = this.menuElement.w + this.regions.right.el.clientWidth;
+
+      //this.regions.left.el.style.backgroundPosition = -fakeWidth + "px 100%";
+
+      // container width - this.regions.left.el.clientWidth
+
+      // this.regions.left.el.style.backgroundPosition = (this.regions.left.el.clientWidth - (254)) + "px 100%";
+      //((this.regions.left.el.clientWidth + offset) - (offsetPointB))
+
+      this.regions.left.el.style.backgroundPosition = -this.container.clientWidth + "px 100%";
+      this.regions.right.el.style.backgroundPosition = -(this.menuElement.w + -offset) + "px 100%";
+
       this.menuElement.bg.style.backgroundPosition = offset + "px 100%";
 
     } else {
