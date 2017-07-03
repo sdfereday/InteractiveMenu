@@ -84,7 +84,7 @@ window.addEventListener('load', function () {
 
       this.regions.right.el.style.backgroundPosition = (offsetPoint + offset) + "px 100%";
       this.regions.left.el.style.backgroundPosition = (offsetPointB + offset) + "px 100%";
-      this.menuElement.bg.style.backgroundPosition = offset + "px 0";
+      this.menuElement.bg.style.backgroundPosition = offset + "px 100%";
 
     } else {
 

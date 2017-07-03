@@ -135,7 +135,7 @@ nav {
   }
 
   li, a {
-    min-height: 5.6em;
+    min-height: 5em;
     display: block;
     float: left;
   }
@@ -168,7 +168,7 @@ nav {
       position: absolute;
       left: 0;
       bottom: 0;
-      background: url('http://www.dccomics.com/sites/default/files/styles/get_to_know_x493/public/gettoknow_loislane_572ce58442e206.54278591.png?itok=A2I--Q_r') no-repeat 1240px 0;
+      background: url('http://www.dccomics.com/sites/default/files/styles/get_to_know_x493/public/gettoknow_loislane_572ce58442e206.54278591.png?itok=A2I--Q_r') no-repeat 1240px 100%;
     }
     .sp {
       display: block;
@@ -207,7 +207,7 @@ nav {
   }
 
   .invert .ltbg {
-      background-position: -1240px 0;
+      background-position: -1240px 100%;
   }
 
 }
