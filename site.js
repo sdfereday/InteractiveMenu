@@ -10,6 +10,7 @@ window.addEventListener('load', function () {
   }
 
   let prevSlide = null;
+  let offset = -256; // TODO: Should be done via data-attrib
 
   let ItemModel = function (heroElement, menuElement, container) {
 
@@ -69,8 +70,6 @@ window.addEventListener('load', function () {
     this.state *= -1;
 
   };
-
-  let offset = -256;
 
   ItemModel.prototype.open = function () {
 
