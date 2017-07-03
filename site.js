@@ -27,7 +27,8 @@ window.addEventListener('load', function () {
     this.menuElement = {
       x: menuElement.offsetLeft,
       w: menuElement.clientWidth,
-      el: menuElement
+      el: menuElement,
+      bg: menuElement.querySelector('.ltbg')
     };
 
     if (this.menuElement.x < 0)
@@ -46,7 +47,7 @@ window.addEventListener('load', function () {
       }
     };
 
-    menuElement.addEventListener('click', function(){
+    menuElement.addEventListener('click', function () {
       self.open();
     });
 
@@ -58,39 +59,57 @@ window.addEventListener('load', function () {
 
     this.heroElement.className = this.classes.hero;
     this.menuElement.el.className = this.classes.menu;
+
     this.regions.right.el.style.backgroundPosition = "";
+    this.regions.left.el.style.backgroundPosition = "";
+    this.menuElement.bg.style.backgroundPosition = "";
+
     this.state *= -1;
 
   };
 
-  ItemModel.prototype.open = function() {
+  let offset = -256;
 
-      this.state *= -1;
-      this.heroElement.className = this.state < 0 ? this.classes.hero + ' active' : this.classes.hero;
-      this.menuElement.el.className = this.state < 0 ? this.classes.menu + ' active' : this.classes.menu;
+  ItemModel.prototype.open = function () {
 
-      if (this.state < 0) {
-        this.regions.right.el.style.backgroundPosition = -(this.menuElement.w) + "px -57px";
-      } else {
-        this.regions.right.el.style.backgroundPosition = "";
-      }
+    this.state *= -1;
+    this.heroElement.className = this.state < 0 ? this.classes.hero + ' active' : this.classes.hero;
+    this.menuElement.el.className = this.state < 0 ? this.classes.menu + ' active' : this.classes.menu;
 
-      if (prevSlide && prevSlide !== this) {
-        prevSlide.hide();
-      }
+    let offsetPoint = (this.menuElement.x + this.regions.right.el.clientWidth) - this.container.clientWidth;
+    let offsetPointB = this.regions.center.width + (this.regions.left.el.clientWidth + (this.menuElement.x + this.regions.right.el.clientWidth)) - this.container.clientWidth;
+    let offsetPointC = offsetPointB;
 
-      prevSlide = this;
+    if (this.state < 0) {
+
+      this.regions.right.el.style.backgroundPosition = (offsetPoint + offset) + "px 100%";
+      this.regions.left.el.style.backgroundPosition = (offsetPointB + offset) + "px 100%";
+      this.menuElement.bg.style.backgroundPosition = offset + "px 0";
+
+    } else {
+
+      this.regions.right.el.style.backgroundPosition = "";
+      this.regions.left.el.style.backgroundPosition = "";
+      this.menuElement.bg.style.backgroundPosition = "";
+
+    }
+
+    if (prevSlide && prevSlide !== this) {
+      prevSlide.hide();
+    }
+
+    prevSlide = this;
 
   };
 
   ItemModel.prototype.adjustCenter = function (w, h, x, y) {
 
-    this.regions.left.el.style.width = (this.menuElement.x - this.regions.center.width) + 'px';
+    this.regions.left.el.style.width = (this.menuElement.x) + 'px';
 
     this.regions.center.el.style.width = this.regions.center.width + 'px';
 
-    this.regions.right.el.style.width = (this.container.clientWidth - (this.menuElement.x + this.menuElement.w)) + 'px';
-    this.regions.right.el.style.marginLeft = (this.menuElement.x + this.regions.center.width) + 'px';
+    let n = this.container.clientWidth - (this.regions.left.el.clientWidth + this.regions.center.width);
+    this.regions.right.el.style.width = n + 'px';
 
   };
 
@@ -109,6 +128,6 @@ window.addEventListener('load', function () {
 
   });
 
-  //items[0].open();
+  items[0].open();
 
 });
