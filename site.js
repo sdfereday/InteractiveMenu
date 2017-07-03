@@ -31,6 +31,8 @@ window.addEventListener('load', function () {
       bg: menuElement.querySelector('.ltbg')
     };
 
+    this.contentElement = heroElement.querySelector('.content');
+
     if (this.menuElement.x < 0)
       this.menuElement.x = 0;
 

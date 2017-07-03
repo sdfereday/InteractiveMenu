@@ -18,7 +18,8 @@ body {
   max-width: 1240px;
   padding-top: 6em;
   position: relative;
-  margin: 0 auto;
+  margin: 3em auto;
+  overflow: hidden;
   background: url('https://www.toptal.com/designers/subtlepatterns/patterns/contemporary_china_2.png');
 }
 
@@ -40,7 +41,7 @@ body {
       opacity: 1;
     }
     .content {
-      right: 0;
+      left: 0;
       transition: all 0.5s ease;
     }
   }
@@ -59,8 +60,8 @@ body {
 
     &.active {
       .content {
-        right: auto;
-        left: 0;
+        right: 0;
+        left: auto;
       }
     }
 
@@ -73,26 +74,36 @@ body {
   height: 43em;
 
   .content {
-    width: 40%;
+
+    max-width: 400px;
     position: absolute;
-    right: -100em;
-    top: 5em;
-    color: #fff;
+    left: 1240px;
+    top: 2em;
     padding: 2em;
-    margin: 5em 20em 0 20em;
+    margin: 5em 2em 0 2em;
+
+    color: #333;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    line-height: 1.5em;
 
     button {
-      padding: 0.8em;
-      font-size: 0.9em;
+      padding: 0.6em 1em;
+      font-size: 0.8em;
+      font-weight: bold;
       text-transform: uppercase;
+      color: #e44852;
+      background: #fff;
+      border: 2px solid #e44852;
     }
 
   }
 
   &.invert {
     .content {
-      left: -100em;
-      right: auto;
+      right: 1240px;
+      left: auto;
+      text-align: right;
     }
   }
 
@@ -132,6 +143,41 @@ nav {
   }
   li {
     width: 20%;
+    position: relative;
+    background: #fff;
+    border-right: 1px solid #ccc;
+    
+    &:first-child {
+      border-left: 1px solid #ccc;
+    }
+
+    &.active .close {
+      display: block;
+    }
+
+    &.active .hat {
+      display: none;
+    }
+
+    .close, .hat {
+      width: auto;
+      min-height: 0;
+      padding: 0;
+      position: absolute;
+      right: 0.8em;
+      top: 0.8em;
+      display: none;
+      font-weight: bold;
+      color: #fff;
+      font-size: 2em;
+    }
+
+    .hat {
+      display: block;
+      top: 1em;
+      color: #ccc;
+    }
+
   }
 
   li, a {
@@ -151,10 +197,11 @@ nav {
     color: #000;
     text-decoration: none;
     .ltext {
+      padding: 0.4em;
       color: #000;
       position: absolute;
       left: 0.5em;
-      top: 0.8em;
+      top: 0.7em;
       font-size: 1.6em;
       z-index: 999;
       transition: all 0.2s ease-out;
@@ -175,12 +222,12 @@ nav {
       position: absolute;
       left: 0;
       width: 100%;
-      height: 7px;
       transition: all 0.2s ease-out;
       &.sp1 {
         bottom: 60px;
       }
       &.sp2 {
+        height: 7px;
         bottom: auto;
         top: 0;
       }

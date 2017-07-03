@@ -19,7 +19,7 @@
     top: 8px;
   }
   to {
-    top: -120px;
+    top: -280px;
   }
 }
 @keyframes bg {
@@ -49,28 +49,12 @@
 .orange .sp {
   background: #f26c4f;
 }
-.orange .content button {
-  color: #f26c4f;
-  background: #fff;
-  border: 5px solid #f26c4f;
-}
-.orange .content {
-  background: rgba(33, 33, 33, 0.6);
-}
 .orange .center-region {
   background: rgba(33, 33, 33, 0.6);
 }
 
 .green .sp {
   background: #4ce996;
-}
-.green .content button {
-  color: #4ce996;
-  background: #fff;
-  border: 5px solid #4ce996;
-}
-.green .content {
-  background: rgba(33, 33, 33, 0.6);
 }
 .green .center-region {
   background: rgba(33, 33, 33, 0.6);
@@ -79,14 +63,6 @@
 .pink .sp {
   background: #f24f94;
 }
-.pink .content button {
-  color: #f24f94;
-  background: #fff;
-  border: 5px solid #f24f94;
-}
-.pink .content {
-  background: rgba(33, 33, 33, 0.6);
-}
 .pink .center-region {
   background: rgba(33, 33, 33, 0.6);
 }
@@ -94,28 +70,12 @@
 .yellow .sp {
   background: #f2ce4f;
 }
-.yellow .content button {
-  color: #f2ce4f;
-  background: #fff;
-  border: 5px solid #f2ce4f;
-}
-.yellow .content {
-  background: rgba(33, 33, 33, 0.6);
-}
 .yellow .center-region {
   background: rgba(33, 33, 33, 0.6);
 }
 
 .teal .sp {
   background: #4fd1f2;
-}
-.teal .content button {
-  color: #4fd1f2;
-  background: #fff;
-  border: 5px solid #4fd1f2;
-}
-.teal .content {
-  background: rgba(33, 33, 33, 0.6);
 }
 .teal .center-region {
   background: rgba(33, 33, 33, 0.6);
@@ -137,7 +97,8 @@ body {
   max-width: 1240px;
   padding-top: 6em;
   position: relative;
-  margin: 0 auto;
+  margin: 3em auto;
+  overflow: hidden;
   background: url("https://www.toptal.com/designers/subtlepatterns/patterns/contemporary_china_2.png");
 }
 
@@ -159,7 +120,7 @@ body {
   opacity: 1;
 }
 .hero.active .content {
-  right: 0;
+  left: 0;
   transition: all 0.5s ease;
 }
 .hero .right-region, .hero .left-region {
@@ -171,8 +132,8 @@ body {
   background-position: -1240px 0;
 }
 .hero.invert.active .content {
-  right: auto;
-  left: 0;
+  right: 0;
+  left: auto;
 }
 
 .hero-item {
@@ -180,22 +141,30 @@ body {
   height: 43em;
 }
 .hero-item .content {
-  width: 40%;
+  max-width: 400px;
   position: absolute;
-  right: -100em;
-  top: 5em;
-  color: #fff;
+  left: 1240px;
+  top: 2em;
   padding: 2em;
-  margin: 5em 20em 0 20em;
+  margin: 5em 2em 0 2em;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  line-height: 1.5em;
 }
 .hero-item .content button {
-  padding: 0.8em;
-  font-size: 0.9em;
+  padding: 0.6em 1em;
+  font-size: 0.8em;
+  font-weight: bold;
   text-transform: uppercase;
+  color: #e44852;
+  background: #fff;
+  border: 2px solid #e44852;
 }
 .hero-item.invert .content {
-  left: -100em;
-  right: auto;
+  right: 1240px;
+  left: auto;
+  text-align: right;
 }
 
 .left-region,
@@ -231,6 +200,35 @@ nav ul {
 }
 nav li {
   width: 20%;
+  position: relative;
+  background: #fff;
+  border-right: 1px solid #ccc;
+}
+nav li:first-child {
+  border-left: 1px solid #ccc;
+}
+nav li.active .close {
+  display: block;
+}
+nav li.active .hat {
+  display: none;
+}
+nav li .close, nav li .hat {
+  width: auto;
+  min-height: 0;
+  padding: 0;
+  position: absolute;
+  right: 0.8em;
+  top: 0.8em;
+  display: none;
+  font-weight: bold;
+  color: #fff;
+  font-size: 2em;
+}
+nav li .hat {
+  display: block;
+  top: 1em;
+  color: #ccc;
 }
 nav li, nav a {
   min-height: 5em;
@@ -249,10 +247,11 @@ nav a {
   text-decoration: none;
 }
 nav a .ltext {
+  padding: 0.4em;
   color: #000;
   position: absolute;
   left: 0.5em;
-  top: 0.8em;
+  top: 0.7em;
   font-size: 1.6em;
   z-index: 999;
   transition: all 0.2s ease-out;
@@ -273,13 +272,13 @@ nav a .sp {
   position: absolute;
   left: 0;
   width: 100%;
-  height: 7px;
   transition: all 0.2s ease-out;
 }
 nav a .sp.sp1 {
   bottom: 60px;
 }
 nav a .sp.sp2 {
+  height: 7px;
   bottom: auto;
   top: 0;
 }
