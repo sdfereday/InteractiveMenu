@@ -73,6 +73,93 @@
   background: rgba(33, 33, 33, 0.6);
 }
 
+.tcon {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  transition: 0.3s;
+  user-select: none;
+  width: 40px;
+  background: transparent;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.tcon > * {
+  display: block;
+}
+.tcon:hover, .tcon:focus {
+  outline: none;
+}
+.tcon::-moz-focus-inner {
+  border: 0;
+}
+
+.tcon-remove {
+  height: 40px;
+  position: relative;
+  transform: scale(0.75);
+  width: 40px;
+}
+.tcon-remove::before, .tcon-remove::after {
+  content: "";
+  display: block;
+  height: 25%;
+  width: 85%;
+  position: absolute;
+  top: 37%;
+  left: 8%;
+  transition: 0.3s;
+  background: white;
+}
+.tcon-remove::before {
+  transform: rotate(45deg);
+}
+.tcon-remove::after {
+  transform: rotate(-45deg);
+}
+
+.tcon-remove--chevron-up.tcon-transform::before {
+  left: 5%;
+  transform: rotate(-45deg);
+  width: 59%;
+  color: #ccc;
+  background: #ccc;
+}
+.tcon-remove--chevron-up.tcon-transform::after {
+  left: auto;
+  right: 10%;
+  transform: rotate(45deg);
+  width: 60%;
+  color: #ccc;
+  background: #ccc;
+}
+
+.tcon-visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.tcon-visuallyhidden:active, .tcon-visuallyhidden:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
 nav a, p, button {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -247,29 +334,6 @@ nav li {
 nav li:first-child {
   border-left: 1px solid #ccc;
 }
-nav li.active .close {
-  display: block;
-}
-nav li.active .hat {
-  display: none;
-}
-nav li .close, nav li .hat {
-  width: auto;
-  min-height: 0;
-  padding: 0;
-  position: absolute;
-  right: 0.8em;
-  top: 0.8em;
-  display: none;
-  font-weight: bold;
-  color: #fff;
-  font-size: 2em;
-}
-nav li .hat {
-  display: block;
-  top: 1em;
-  color: #ccc;
-}
 nav li, nav a {
   min-height: 5em;
   display: block;
@@ -277,7 +341,7 @@ nav li, nav a {
 }
 nav a {
   width: 100%;
-  padding-right: 12em;
+  padding-right: 0.9em;
   padding-top: 0.6em;
   padding-left: 0.9em;
   position: relative;
@@ -297,6 +361,7 @@ nav a .ltext {
   -webkit-transition-delay: 0.1s;
   /* Safari */
   transition-delay: 0.1s;
+  z-index: 50;
 }
 nav a .ltbg {
   transition: all 0.8s ease;
@@ -326,6 +391,7 @@ nav a .sp.sp2 {
   height: 7px;
   bottom: auto;
   top: 0;
+  z-index: 20;
 }
 nav a .sp.sp1, nav a .sp.sp2, nav a .sp.ltbg {
   opacity: 0.8;
@@ -342,6 +408,10 @@ nav li.active a span.sp2 {
 }
 nav li.active a span.ltbg {
   animation: top 0.3s forwards, bg 0.4s 0.4s forwards;
+}
+nav .tcon {
+  margin-top: 0.5em;
+  float: right;
 }
 nav .ltbg {
   background-position: 0 0;

@@ -5,6 +5,7 @@ $heroItemHeight: 43em;
 // Components
 @import "animations";
 @import "colors";
+@import "button-toggle";
 
 // Font
 nav a, p, button {
@@ -208,33 +209,6 @@ nav {
       border-left: 1px solid #ccc;
     }
 
-    &.active .close {
-      display: block;
-    }
-
-    &.active .hat {
-      display: none;
-    }
-
-    .close, .hat {
-      width: auto;
-      min-height: 0;
-      padding: 0;
-      position: absolute;
-      right: 0.8em;
-      top: 0.8em;
-      display: none;
-      font-weight: bold;
-      color: #fff;
-      font-size: 2em;
-    }
-
-    .hat {
-      display: block;
-      top: 1em;
-      color: #ccc;
-    }
-
   }
 
   li, a {
@@ -245,7 +219,7 @@ nav {
 
   a {
     width: 100%;
-    padding-right: 12em;
+    padding-right: 0.9em;
     padding-top: 0.6em;
     padding-left: 0.9em;
     position: relative;
@@ -263,6 +237,7 @@ nav {
       transition: top 0.4s ease;
       -webkit-transition-delay: 0.1s; /* Safari */
       transition-delay: 0.1s;
+      z-index: 50;
     }
     .ltbg {
       transition: all 0.8s ease;
@@ -290,6 +265,7 @@ nav {
         height: 7px;
         bottom: auto;
         top: 0;
+        z-index: 20;
       }
       &.sp1, &.sp2, &.ltbg {
         opacity: 0.8;
@@ -311,6 +287,11 @@ nav {
     &.ltbg {
       animation: top 0.3s forwards, bg 0.4s 0.4s forwards;
     }
+  }
+
+  .tcon {
+    margin-top: 0.5em;
+    float: right;
   }
 
   // Background positionining for central area

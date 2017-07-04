@@ -10,12 +10,12 @@ window.addEventListener('load', function () {
   }
 
   let prevSlide = null,
-  items = [],
-  heroItems = document.querySelectorAll('.hero-item'),
-  menuItems = document.querySelectorAll('.menu-item');
+    items = [],
+    heroItems = document.querySelectorAll('.hero-item'),
+    menuItems = document.querySelectorAll('.menu-item');
 
   let ItemModel = function (heroElement, menuElement, container) {
-   
+
     this.heroElement = heroElement;
     this.container = container;
     this.state = 1;
@@ -53,12 +53,20 @@ window.addEventListener('load', function () {
       }
     };
 
+    this.tcon = menuElement.querySelector('.tcon');
+
+    if (this.tcon)
+      transformicons.remove(this.tcon, 'click');
+
     let self = this;
     menuElement.addEventListener('click', function () {
       self.open();
     });
 
     this.adjustCenter();
+
+    if (this.tcon)
+        transformicons.transform(this.tcon);
 
   };
 
@@ -68,6 +76,9 @@ window.addEventListener('load', function () {
     this.regions.left.bg.style.backgroundPosition = "";
     this.menuElement.bg.style.backgroundPosition = "";
 
+    if (this.tcon)
+        transformicons.transform(this.tcon);
+
   };
 
   ItemModel.prototype.reposition = function () {
@@ -75,6 +86,9 @@ window.addEventListener('load', function () {
     this.regions.left.bg.style.backgroundPosition = (this.menuElement.w + this.offset) + "px 0";
     this.regions.right.bg.style.backgroundPosition = -(this.menuElement.w + -this.offset) + "px 0";
     this.menuElement.bg.style.backgroundPosition = this.offset + "px 0";
+
+    if (this.tcon)
+        transformicons.revert(this.tcon);
 
   };
 
