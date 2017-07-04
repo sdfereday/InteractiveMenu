@@ -59,7 +59,6 @@ body {
       opacity: 1;
       button {
         margin-left: 0;
-        opacity: 1;
       }
     }
   }
@@ -106,7 +105,7 @@ body {
 
   .content {
 
-    max-width: 400px;
+    width: 520px;
     position: absolute;
     left: 320px;
     top: 2em;
@@ -299,7 +298,8 @@ nav {
   transition-delay: 0.8s;
 
   button {
-    transition: margin $fps ease 0.15s, background $fps ease 0s;
+    animation: opacityanim $fps ease 1.15s forwards;
+    transition: margin $fps 1.05s, background $fps 0s;
   }
 
 }
