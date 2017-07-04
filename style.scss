@@ -70,7 +70,7 @@ body {
       transition: all 0.9s ease;
       -webkit-transition-delay: 0.3s; /* Safari */
       transition-delay: 0.3s;
-      background-position: -365px 100%;
+      background-position: -248px 100%; // This is the 'starting' position of the slide. JS will modify it on activation.
       background-repeat: no-repeat;
     }
   }
@@ -79,17 +79,17 @@ body {
     right: -992px;
     // Which interestingly is the container width negative the central area. 1240 - 248 - Which clearly will place the bg image at the correct
     // point. Why? Because it treats the right edge of the box as the same point of the 'x' value of the central column.
-    background-position: 0 100%;
+    background-position: 248px 100%; // This is the 'starting' position of the slide. JS will modify it on activation.
   }
 
   &.invert {
 
     .right-region .bg {
-      background-position: -700px 100%;
+      background-position: -290px 100%; // This is the 'starting' position of the slide. JS will modify it on activation.
     }
 
     .left-region .bg {
-      background-position: -200px 100%;
+      background-position: 200px 100%; // This is the 'starting' position of the slide. JS will modify it on activation.
     }
 
     &.active {
@@ -313,11 +313,11 @@ nav {
 
   // Background positionining for central area
   .ltbg {
-    background-position: -220px 100%;
+    background-position: 0 100%;
   }
 
   .invert .ltbg {
-      background-position: -340px 100%;
+      background-position: -62px 100%; // '62' is a quarter of the central area
   }
 
 }
