@@ -72,9 +72,9 @@ window.addEventListener('load', function () {
 
   ItemModel.prototype.reposition = function () {
 
-    this.regions.left.bg.style.backgroundPosition = (this.menuElement.w + this.offset) + "px 100%";
-    this.regions.right.bg.style.backgroundPosition = -(this.menuElement.w + -this.offset) + "px 100%";
-    this.menuElement.bg.style.backgroundPosition = this.offset + "px 100%";
+    this.regions.left.bg.style.backgroundPosition = (this.menuElement.w + this.offset) + "px 0";
+    this.regions.right.bg.style.backgroundPosition = -(this.menuElement.w + -this.offset) + "px 0";
+    this.menuElement.bg.style.backgroundPosition = this.offset + "px 0";
 
   };
 
