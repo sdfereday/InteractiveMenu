@@ -76,7 +76,8 @@ body {
   }
 
   .left-region .bg {
-    right: -992px; // Which interestingly is the container width negative the central area. 1240 - 248 - Which clearly will place the bg image at the correct
+    right: -992px;
+    // Which interestingly is the container width negative the central area. 1240 - 248 - Which clearly will place the bg image at the correct
     // point. Why? Because it treats the right edge of the box as the same point of the 'x' value of the central column.
     background-position: 0 100%;
   }

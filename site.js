@@ -9,16 +9,17 @@ window.addEventListener('load', function () {
     }
   }
 
-  let prevSlide = null;
+  let prevSlide = null,
+  items = [],
+  heroItems = document.querySelectorAll('.hero-item'),
+  menuItems = document.querySelectorAll('.menu-item');
 
   let ItemModel = function (heroElement, menuElement, container) {
-
-    let self = this;
-
+   
     this.heroElement = heroElement;
     this.container = container;
     this.state = 1;
-    this.offset = -25;
+    this.offset = parseInt(heroElement.getAttribute('data-bgoffset')) || 0;
 
     this.classes = {
       hero: heroElement.className,
@@ -52,6 +53,7 @@ window.addEventListener('load', function () {
       }
     };
 
+    let self = this;
     menuElement.addEventListener('click', function () {
       self.open();
     });
@@ -116,15 +118,9 @@ window.addEventListener('load', function () {
 
   };
 
-  let heroItems = document.querySelectorAll('.hero-item');
-  let menuItems = document.querySelectorAll('.menu-item');
-
-  let items = [];
-
   if (heroItems.length !== menuItems.length)
     throw "Mismatch length.";
 
-  // Order matters
   foreach(heroItems, function (el, i) {
 
     items.push(new ItemModel(el, menuItems[i], document.querySelector('.container')));
