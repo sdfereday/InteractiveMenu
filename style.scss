@@ -1,7 +1,7 @@
 // Adjust as appropriate (temporary measure)
 $containerWidth: 1240px;
 $heroItemHeight: 43em;
-$fps: 0.6s;
+$speed: 0.4s;
 
 // Components
 @import "animations";
@@ -66,7 +66,7 @@ body {
   .right-region, .left-region {
     opacity: 0;
     .bg {
-      background-position: -248px 0%; // This is the 'starting' position of the slide. JS will modify it on activation.
+      background-position: -248px 0; // This is the 'starting' position of the slide. JS will modify it on activation.
       background-repeat: no-repeat;
     }
   }
@@ -75,17 +75,17 @@ body {
     right: -992px;
     // Which interestingly is the container width negative the central area. 1240 - 248 - Which clearly will place the bg image at the correct
     // point. Why? Because it treats the right edge of the box as the same point of the 'x' value of the central column.
-    background-position: 248px 0%; // This is the 'starting' position of the slide. JS will modify it on activation.
+    background-position: 248px 0; // This is the 'starting' position of the slide. JS will modify it on activation.
   }
 
   &.invert {
 
     .right-region .bg {
-      background-position: -290px 0%; // This is the 'starting' position of the slide. JS will modify it on activation.
+      background-position: -290px 0; // This is the 'starting' position of the slide. JS will modify it on activation.
     }
 
     .left-region .bg {
-      background-position: 200px 0%; // This is the 'starting' position of the slide. JS will modify it on activation.
+      background-position: 200px 0; // This is the 'starting' position of the slide. JS will modify it on activation.
     }
 
     &.active {
@@ -227,7 +227,7 @@ nav {
     .ltbg {
       opacity: 0;
       width: 100%;
-      height: 100%;
+      height: $heroItemHeight;
       position: absolute;
       left: 0;
       bottom: 0;
@@ -282,11 +282,11 @@ nav {
 .hero {
 
   .right-region, .left-region {
-    transition: all $fps ease;
-    transition-delay: 0.3s;
+    transition: all $speed ease;
+    transition-delay: 0.1s;
     .bg {
-      transition: all $fps ease;
-      transition-delay: 0.3s;
+      transition: all $speed ease;
+      transition-delay: 0.1s;
     }
   }
 
@@ -294,12 +294,12 @@ nav {
 
 .hero-item  .content {
 
-  transition: all $fps ease;
-  transition-delay: 0.8s;
+  transition: all $speed ease;
+  transition-delay: 0.3s;
 
   button {
-    animation: opacityanim $fps ease 1.15s forwards;
-    transition: margin $fps 1.05s, background $fps 0s;
+    animation: opacityanim $speed ease 0.7s forwards;
+    transition: margin $speed 0.5s, background $speed 0s;
   }
 
 }
@@ -309,30 +309,30 @@ nav {
 
   a {
     .ltbg {
-      transition: all $fps ease;
-      transition-delay: 0.6s;
+      transition: all $speed ease;
+      transition-delay: 0.2s;
     }
     .sp {
-      transition: all $fps ease;
+      transition: all $speed ease;
     }
   }
 
   li.active a {
     .ltext {
-      transition: top $fps ease;
-      transition-delay: 0.5s;
+      transition: top $speed ease;
+      transition-delay: 0.2s;
     }
   }
 
   li.active a span {
     &.sp1 {
-      animation: top $fps forwards;
+      animation: top $speed forwards;
     }
     &.sp2 {
-      animation: bottom $fps forwards;
+      animation: bottom $speed forwards;
     }
     &.ltbg {
-      animation: top $fps forwards, opacityanim $fps 0.6s forwards;
+      animation: opacityanim $speed 0.2s forwards;
     }
   }
 
