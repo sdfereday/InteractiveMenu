@@ -10,8 +10,8 @@ window.addEventListener('load', function () {
   }
 
   let prevSlide = null;
-  let offset = -256; // TODO: Should be done via data-attrib
-  let backgroundWidth = 493;
+  //let offset = -256; // TODO: Should be done via data-attrib
+  let offset = -25;
 
   let ItemModel = function (heroElement, menuElement, container) {
 
@@ -88,7 +88,8 @@ window.addEventListener('load', function () {
 
     if (this.state < 0) {
 
-      this.regions.left.bg.style.backgroundPosition = "0 100%";
+      // this.regions.left.bg.style.backgroundPosition = "0 100%";
+      this.regions.left.bg.style.backgroundPosition = (this.menuElement.w + offset) + "px 100%";
       this.regions.right.bg.style.backgroundPosition = -(this.menuElement.w + -offset) + "px 100%";
       this.menuElement.bg.style.backgroundPosition = offset + "px 100%";
 

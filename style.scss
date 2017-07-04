@@ -3,6 +3,22 @@
 $containerWidth: 1240px;
 $halfContainer: $containerWidth / 2;
 
+// Font
+nav a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
 // Site styles
 body {
   padding: 0;
@@ -37,8 +53,6 @@ body {
   &.active {
     opacity: 1;
     .right-region, .left-region {
-      -webkit-filter: grayscale(1);
-      filter: grayscale(1);
       opacity: 1;
     }
     .content {
@@ -61,18 +75,18 @@ body {
       transition: all 0.9s ease;
       -webkit-transition-delay: 0.3s; /* Safari */
       transition-delay: 0.3s;
-      background-size: cover;
-      background: url('http://www.dccomics.com/sites/default/files/styles/get_to_know_x493/public/gettoknow_loislane_572ce58442e206.54278591.png?itok=A2I--Q_r') no-repeat -365px 100%;
-      &.variant-2 {
-        background-image: url('http://www.pngall.com/wp-content/uploads/2016/05/Red-Panda-Free-Download-PNG.png');
-      }
+     // background-size: cover;
+      background-position: -365px 100%;
+      background-repeat: no-repeat;
     }
 
   }
 
   .left-region .bg {
-    right: -$halfContainer - 365px;
-    background-position: 200px 100%;
+    //right: -$halfContainer - 372px;
+    right: -992px; // Which interestingly is the container width negative the central area. 1240 - 248 - Which clearly will place the bg image at the correct
+    // point. Why? Because it treats the right edge of the box as the same point of the 'x' value of the central column.
+    background-position: 0 100%;
   }
 
   &.invert {
