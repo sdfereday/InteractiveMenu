@@ -18,32 +18,11 @@
 }
 
 // Animates transparent layer bg image
-@keyframes bg {
-  from {
-    //background-position: -10% 0;
-    opacity: 0;
-  }
-  to {
-    //background-position: 0 0;
-    opacity: 1;
-  }
-}
-
-// Animates banner area layers
-@keyframes herobg {
+@keyframes opacityanim {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes herocontent {
-  from {
-    left: 100%;
-  }
-  to {
-    left: 0;
   }
 }

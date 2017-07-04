@@ -14,28 +14,12 @@
     height: 60px;
   }
 }
-@keyframes bg {
+@keyframes opacityanim {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-@keyframes herobg {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes herocontent {
-  from {
-    left: 100%;
-  }
-  to {
-    left: 0;
   }
 }
 .orange .sp {
@@ -389,41 +373,41 @@ nav .invert .ltbg {
 }
 
 .hero .right-region, .hero .left-region {
-  transition: all 0.9s ease;
+  transition: all 0.6s ease;
   transition-delay: 0.3s;
 }
 .hero .right-region .bg, .hero .left-region .bg {
-  transition: all 0.9s ease;
+  transition: all 0.6s ease;
   transition-delay: 0.3s;
 }
 
 .hero-item .content {
-  transition: all 0.8s ease;
-  transition-delay: 0.3s;
+  transition: all 0.6s ease;
+  transition-delay: 0.8s;
 }
 .hero-item .content button {
-  transition: margin 0.8s ease 0.4s, background 0.4s ease 0s;
+  transition: margin 0.6s ease 0.15s, background 0.6s ease 0s;
 }
 
-nav a .ltext {
-  transition: top 0.4s ease;
-  transition-delay: 0.1s;
-}
 nav a .ltbg {
-  transition: all 0.8s ease;
-  transition-delay: 0.4s;
+  transition: all 0.6s ease;
+  transition-delay: 0.6s;
 }
 nav a .sp {
-  transition: all 0.2s ease-out;
+  transition: all 0.6s ease;
+}
+nav li.active a .ltext {
+  transition: top 0.6s ease;
+  transition-delay: 0.5s;
 }
 nav li.active a span.sp1 {
-  animation: top 0.4s forwards;
+  animation: top 0.6s forwards;
 }
 nav li.active a span.sp2 {
-  animation: bottom 0.4s forwards;
+  animation: bottom 0.6s forwards;
 }
 nav li.active a span.ltbg {
-  animation: top 0.3s forwards, bg 0.4s 0.4s forwards;
+  animation: top 0.6s forwards, opacityanim 0.6s 0.6s forwards;
 }
 
 /*# sourceMappingURL=style.css.map */
