@@ -73,19 +73,13 @@
   background: rgba(33, 33, 33, 0.6);
 }
 
-nav a {
+nav a, p, button {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
 
 p {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-}
-
-button {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
 }
 
 body {
@@ -173,6 +167,7 @@ body {
   padding: 2em;
   margin: 5em 2em 0 2em;
   opacity: 0;
+  z-index: 999;
   color: #333;
   text-transform: uppercase;
   font-size: 1.5em;
@@ -192,10 +187,12 @@ body {
   background: #fff;
   border: 2px solid #e44852;
   opacity: 0;
-  transition: all 0.8s ease;
-  -webkit-transition-delay: 0.4s;
-  /* Safari */
-  transition-delay: 0.4s;
+  cursor: pointer;
+  transition: margin 0.8s ease 0.4s, background 0.4s ease 0s;
+}
+.hero-item .content button:hover {
+  background: #e44852;
+  color: #fff;
 }
 .hero-item.invert .content {
   right: 320px;
@@ -296,7 +293,6 @@ nav a .ltext {
   left: 0.5em;
   top: 8px;
   font-size: 1.6em;
-  z-index: 999;
   transition: top 0.4s ease;
   -webkit-transition-delay: 0.1s;
   /* Safari */
@@ -313,11 +309,7 @@ nav a .ltbg {
   position: absolute;
   left: 0;
   bottom: 0;
-  background-size: cover;
-  background: url("http://www.dccomics.com/sites/default/files/styles/get_to_know_x493/public/gettoknow_loislane_572ce58442e206.54278591.png?itok=A2I--Q_r") no-repeat -220px 100%;
-}
-nav a .ltbg.variant-2 {
-  background-image: url("http://www.pngall.com/wp-content/uploads/2016/05/Red-Panda-Free-Download-PNG.png");
+  background-repeat: no-repeat;
 }
 nav a .sp {
   display: block;
@@ -349,6 +341,9 @@ nav li.active a span.sp2 {
 }
 nav li.active a span.ltbg {
   animation: top 0.3s forwards, bg 0.4s 0.4s forwards;
+}
+nav .ltbg {
+  background-position: -220px 100%;
 }
 nav .invert .ltbg {
   background-position: -340px 100%;

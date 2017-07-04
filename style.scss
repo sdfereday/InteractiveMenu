@@ -1,22 +1,18 @@
 @import "animations";
 @import "colors";
+
+// Adjust as appropriate (temporary measure)
 $containerWidth: 1240px;
-$halfContainer: $containerWidth / 2;
+$heroItemHeight: 43em;
 
 // Font
-nav a {
+nav a, p, button {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
 
 p {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-}
-
-button {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
 }
 
 // Site styles
@@ -70,20 +66,16 @@ body {
     transition: all 0.9s ease;
     -webkit-transition-delay: 0.3s; /* Safari */
     transition-delay: 0.3s;
-
     .bg {
       transition: all 0.9s ease;
       -webkit-transition-delay: 0.3s; /* Safari */
       transition-delay: 0.3s;
-     // background-size: cover;
       background-position: -365px 100%;
       background-repeat: no-repeat;
     }
-
   }
 
   .left-region .bg {
-    //right: -$halfContainer - 372px;
     right: -992px; // Which interestingly is the container width negative the central area. 1240 - 248 - Which clearly will place the bg image at the correct
     // point. Why? Because it treats the right edge of the box as the same point of the 'x' value of the central column.
     background-position: 0 100%;
@@ -112,7 +104,7 @@ body {
 
 .hero-item {
   width: 100%;
-  height: 43em;
+  height: $heroItemHeight;
 
   .content {
 
@@ -123,6 +115,7 @@ body {
     padding: 2em;
     margin: 5em 2em 0 2em;
     opacity: 0;
+    z-index: 999;
 
     color: #333;
     text-transform: uppercase;
@@ -143,10 +136,13 @@ body {
       background: #fff;
       border: 2px solid #e44852;
       opacity: 0;
+      cursor: pointer;
+      transition: margin 0.8s ease 0.4s, background 0.4s ease 0s;
 
-      transition: all 0.8s ease;
-      -webkit-transition-delay: 0.4s; /* Safari */
-      transition-delay: 0.4s;
+      &:hover {
+        background: #e44852;
+        color: #fff;
+      }
 
     }
 
@@ -173,17 +169,15 @@ body {
 
 .right-region,
 .left-region {
-  height: 43em;
+  height: $heroItemHeight;
   overflow: hidden;
   position: relative;
-
   .bg {
     width: $containerWidth;
-    height: 43em;
+    height: $heroItemHeight;
     position: absolute;
     top: 0;
   }
-
 }
 
 .right-region {
@@ -264,7 +258,6 @@ nav {
       left: 0.5em;
       top: 8px;
       font-size: 1.6em;
-      z-index: 999;
       transition: top 0.4s ease;
       -webkit-transition-delay: 0.1s; /* Safari */
       transition-delay: 0.1s;
@@ -279,11 +272,7 @@ nav {
       position: absolute;
       left: 0;
       bottom: 0;
-      background-size: cover;
-      background: url('http://www.dccomics.com/sites/default/files/styles/get_to_know_x493/public/gettoknow_loislane_572ce58442e206.54278591.png?itok=A2I--Q_r') no-repeat -220px 100%;
-      &.variant-2 {
-        background-image: url('http://www.pngall.com/wp-content/uploads/2016/05/Red-Panda-Free-Download-PNG.png');
-      }
+      background-repeat: no-repeat;
     }
     .sp {
       display: block;
@@ -319,6 +308,11 @@ nav {
     &.ltbg {
       animation: top 0.3s forwards, bg 0.4s 0.4s forwards;
     }
+  }
+
+  // Background positionining for central area
+  .ltbg {
+    background-position: -220px 100%;
   }
 
   .invert .ltbg {

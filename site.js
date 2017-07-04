@@ -10,8 +10,6 @@ window.addEventListener('load', function () {
   }
 
   let prevSlide = null;
-  //let offset = -256; // TODO: Should be done via data-attrib
-  let offset = -25;
 
   let ItemModel = function (heroElement, menuElement, container) {
 
@@ -20,6 +18,7 @@ window.addEventListener('load', function () {
     this.heroElement = heroElement;
     this.container = container;
     this.state = 1;
+    this.offset = -25;
 
     this.classes = {
       hero: heroElement.className,
@@ -69,6 +68,14 @@ window.addEventListener('load', function () {
 
   };
 
+  ItemModel.prototype.reposition = function () {
+
+    this.regions.left.bg.style.backgroundPosition = (this.menuElement.w + this.offset) + "px 100%";
+    this.regions.right.bg.style.backgroundPosition = -(this.menuElement.w + -this.offset) + "px 100%";
+    this.menuElement.bg.style.backgroundPosition = this.offset + "px 100%";
+
+  };
+
   ItemModel.prototype.hide = function () {
 
     this.heroElement.className = this.classes.hero;
@@ -87,21 +94,13 @@ window.addEventListener('load', function () {
     this.menuElement.el.className = this.state < 0 ? this.classes.menu + ' active' : this.classes.menu;
 
     if (this.state < 0) {
-
-      // this.regions.left.bg.style.backgroundPosition = "0 100%";
-      this.regions.left.bg.style.backgroundPosition = (this.menuElement.w + offset) + "px 100%";
-      this.regions.right.bg.style.backgroundPosition = -(this.menuElement.w + -offset) + "px 100%";
-      this.menuElement.bg.style.backgroundPosition = offset + "px 100%";
-
+      this.reposition();
     } else {
-
       this.clear();
-
     }
 
-    if (prevSlide && prevSlide !== this) {
+    if (prevSlide && prevSlide !== this)
       prevSlide.hide();
-    }
 
     prevSlide = this;
 
@@ -110,7 +109,6 @@ window.addEventListener('load', function () {
   ItemModel.prototype.adjustCenter = function (w, h, x, y) {
 
     this.regions.left.el.style.width = (this.menuElement.x) + 'px';
-
     this.regions.center.el.style.width = this.regions.center.width + 'px';
 
     let n = this.container.clientWidth - (this.regions.left.el.clientWidth + this.regions.center.width);
