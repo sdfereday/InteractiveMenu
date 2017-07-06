@@ -1,0 +1,130 @@
+.hero {
+
+  width: 100%;
+  height: $heroItemHeight;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  opacity: 0;
+
+  .content {
+
+    width: 520px;
+    padding: 2em;
+    margin: 5em 2em 0 2em;
+
+    position: absolute;
+    left: 320px;
+    top: 2em;
+
+    opacity: 0;
+    z-index: 999;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    line-height: 1.5em;
+
+    button {
+      padding: 0.6em 1em;
+      margin-left: 6em;
+      font-size: 0.8em;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #e44852;
+      background: #fff;
+      border: 2px solid #e44852;
+      opacity: 0;
+      cursor: pointer;
+
+      &:hover {
+        background: #e44852;
+        color: #fff;
+      }
+
+    }
+
+  }
+
+  .right-region, .left-region {
+    opacity: 0;
+    .bg {
+      background-position: -248px 0; // This is the 'starting' position of the slide. JS will modify it on activation.
+      background-repeat: no-repeat;
+    }
+  }
+
+  .left-region .bg {
+    right: -992px;
+    // Which interestingly is the container width negative the central area. 1240 - 248 - Which clearly will place the bg image at the correct
+    // point. Why? Because it treats the right edge of the box as the same point of the 'x' value of the central column.
+    background-position: 248px 0; // This is the 'starting' position of the slide. JS will modify it on activation.
+  }
+
+  &.invert {
+    .content {
+      right: 320px;
+      left: auto;
+      text-align: right;
+    }
+  }
+  
+  &.active {
+    opacity: 1;
+    .right-region, .left-region {
+      opacity: 1;
+    }
+    .content {
+      left: 0;
+      opacity: 1;
+      button {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &.invert {
+
+    .right-region .bg {
+      background-position: -290px 0; // This is the 'starting' position of the slide. JS will modify it on activation.
+    }
+
+    .left-region .bg {
+      background-position: 200px 0; // This is the 'starting' position of the slide. JS will modify it on activation.
+    }
+
+    &.active {
+      .content {
+        right: 0;
+        left: auto;
+      }
+    }
+
+  }
+  
+    // Hero content regions
+    .left-region,
+    .center-region,
+    .right-region {
+        float: left;
+        text-align: left;
+    }
+
+    .right-region,
+    .left-region {
+        height: $heroItemHeight;
+        overflow: hidden;
+        position: relative;
+        .bg {
+            width: $containerWidth;
+            height: $heroItemHeight;
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    .right-region {
+        float: right;
+    }
+
+}

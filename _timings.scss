@@ -1,0 +1,56 @@
+$speed: 0.4s;
+
+.hero {
+
+  .right-region, .left-region {
+    transition: all $speed ease;
+    transition-delay: 0.1s;
+    .bg {
+      transition: all $speed ease;
+      transition-delay: 0.1s;
+    }
+  }
+
+}
+
+.hero-item  .content {
+
+  transition: all $speed ease;
+  transition-delay: 0.3s;
+
+  button {
+    animation: opacityanim $speed ease 0.7s forwards;
+    transition: margin $speed 0.5s, background $speed 0s;
+  }
+
+}
+
+nav {
+
+  a .ltbg {
+     transition: all $speed ease;
+     transition-delay: 0.2s;
+  }
+
+  a .sp {
+     transition: all $speed ease;
+  }
+  
+  li.active a .ltext {
+      transition: top $speed ease;
+      transition-delay: 0.2s;
+  }
+
+  li.active a span {
+    &.sp1 {
+      animation: top $speed forwards;
+    }
+    &.sp2 {
+      animation: bottom $speed forwards;
+    }
+    &.ltbg {
+      animation: opacityanim $speed 0.2s forwards;
+    }
+  }
+
+}

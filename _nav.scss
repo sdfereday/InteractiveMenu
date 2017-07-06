@@ -1,0 +1,103 @@
+nav {
+  width: 100%;
+  padding-top: 32em;
+  margin: 0 auto;
+  clear: both;
+
+  ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  li, a {
+    min-height: 5em;
+    display: block;
+    float: left;
+  }
+
+  li {
+    width: 20%;
+    position: relative;
+    background: #fff;
+    border-right: 1px solid #ccc;
+    &:first-child {
+      border-left: 1px solid #ccc;
+    }
+  }
+  
+  a {
+    width: 100%;
+    padding-right: 0.9em;
+    padding-top: 0.6em;
+    padding-left: 0.9em;
+    position: relative;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+
+    .ltext {
+      padding: 0.4em;
+      color: #000;
+      position: absolute;
+      left: 0.5em;
+      top: 8px;
+      font-size: 1.6em;
+      z-index: 50;
+    }
+
+    .ltbg {
+      opacity: 0;
+      width: 100%;
+      height: $heroItemHeight;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-repeat: no-repeat;
+    }
+
+    .sp {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      &.sp1 {
+        bottom: 60px;
+      }
+      &.sp2 {
+        height: 7px;
+        bottom: auto;
+        top: 0;
+        z-index: 20;
+      }
+      &.sp1, &.sp2, &.ltbg {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  li.active a span {
+    &.ltext {
+      color: #fff;
+      top: -280px;
+    }
+  }
+
+  .tcon {
+    margin-top: 0.5em;
+    float: right;
+  }
+
+  // Background positionining for central area
+  .ltbg {
+    background-position: 0 0;
+  }
+
+  .invert .ltbg {
+      background-position: -62px 0; // '62' is a quarter of the central area
+  }
+
+}
